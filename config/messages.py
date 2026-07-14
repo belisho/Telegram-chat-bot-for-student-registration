@@ -110,6 +110,8 @@ CHOOSE_ACTION = "<b> ክንውኑ ተሰርዟል።</b> \n ምን ማድረግ 
 MENU_PROMPT = "<b>ምን ማድረግ ይፈልጋሉ? እባክዎ ይምረጡ!</b>"
 BTN_TO_REGISTER = "📝 ለመመዝገብ / To register"
 BTN_REGISTRATION_STATUS = "🔎 የምዝገባ ሁኔታ ለማረጋገጥ/ Registration status"
+BTN_DISCUSSION_GROUP = "💬 ሀሳብ ለመስጠት | Join our discussion group"
+DISCUSSION_GROUP_URL = "https://telegram.me/+UaH_C-PHrNJlNjBk"
 BTN_CANCEL = "❌ አቋርጥ"
 
 GENERIC_ERROR = (

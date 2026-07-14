@@ -31,6 +31,25 @@ def main_menu_keyboard() -> InlineKeyboardMarkup:
     )
 
 
+def welcome_menu_keyboard() -> InlineKeyboardMarkup:
+    """Main menu on /start, including the discussion group join link."""
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(text=messages.BTN_TO_REGISTER, callback_data=CB_MENU_REGISTER)],
+            [
+                InlineKeyboardButton(
+                    text=messages.BTN_REGISTRATION_STATUS, callback_data=CB_MENU_STATUS
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text=messages.BTN_DISCUSSION_GROUP, url=messages.DISCUSSION_GROUP_URL
+                )
+            ],
+        ]
+    )
+
+
 def match_results_keyboard(matches: list[MatchResult]) -> InlineKeyboardMarkup:
     """One button per matched student, plus a 'register new' button."""
     rows: list[list[InlineKeyboardButton]] = []

@@ -20,7 +20,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data.clear()
     chat = update.effective_chat
 
-    menu = inline.main_menu_keyboard()
+    menu = inline.welcome_menu_keyboard()
     image_path = settings.find_welcome_image()
     welcome_sent_as_caption = False
     if image_path is not None:
