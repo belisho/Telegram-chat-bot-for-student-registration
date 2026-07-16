@@ -90,19 +90,17 @@ async def select_match(update: Update, context: ContextTypes.DEFAULT_TYPE) -> in
         return ConversationHandler.END
 
     record = records[index]
-    full_name = str(record.get(settings.COL_FULL_NAME, "")).strip()
-
-    education = str(record.get(settings.COL_EDUCATION, "")).strip() or messages.STUDENT_DETAILS_MISSING
-    assigned_class = (
-        str(record.get(settings.COL_ASSIGNED_CLASS, "")).strip() or messages.STUDENT_DETAILS_MISSING
-    )
+    missing = messages.STUDENT_DETAILS_MISSING
 
     await common.edit_or_send(
         update,
         messages.STUDENT_DETAILS.format(
-            full_name=full_name or messages.STUDENT_DETAILS_MISSING,
-            education=education,
-            assigned_class=assigned_class,
+            full_name=str(record.get(settings.COL_FULL_NAME, "")).strip() or missing,
+            phone=str(record.get(settings.COL_PHONE, "")).strip() or missing,
+            age=str(record.get(settings.COL_AGE, "")).strip() or missing,
+            education=str(record.get(settings.COL_EDUCATION, "")).strip() or missing,
+            assigned_class=str(record.get(settings.COL_ASSIGNED_CLASS, "")).strip() or missing,
+            waiting_family=str(record.get(settings.COL_WAITING_FAMILY, "")).strip() or missing,
         ),
     )
     common.mark_conversation_idle(context)

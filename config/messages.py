@@ -51,8 +51,11 @@ REGISTER_NEW_BUTTON = "➕ አዲስ ተማሪ ለመመዝገብ"
 STUDENT_DETAILS = (
     "✅ <b>የተማሪ መረጃ</b>\n\n"
     "👤 <b>ሙሉ ስም:</b> {full_name}\n"
-    "📚 <b>የትምህርት ደረጃ: </b> {education}\n"
-    "🏫 <b>የተመደበበት ክፍል / Assigned class:</b> {assigned_class}"
+    "📞 <b>ስልክ ቁጥር:</b> {phone}\n"
+    "🎂 <b>እድሜ:</b> {age}\n"
+    "📚 <b>የትምህርት ደረጃ:</b> {education}\n"
+    "🏫 <b>የተመደበበት ክፍል:</b> {assigned_class}\n"
+    "👨‍👩‍👧 <b>ከትምህርት በኋላ ቤተሰብ ይጠብቃሉ?:</b> {waiting_family}\n"
     "<blockquote><b>መረጃ፡</b> \n ትምህርቱ ከሀምሌ 06 ጀምሮ ዘወትር ከሰኞ እስከ አርብ ከቀኑ 8፡00 እስከ 10፡00 ይሰጣል።</blockquote>"
 )
 
