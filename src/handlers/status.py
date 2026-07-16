@@ -17,6 +17,7 @@ from src.handlers import common, states
 from src.keyboards import inline
 from src.services import sheets
 from src.services.matching import find_matches
+from src.utils.records import get_field
 from src.utils.validators import parse_search_name
 
 logger = logging.getLogger(__name__)
@@ -95,12 +96,15 @@ async def select_match(update: Update, context: ContextTypes.DEFAULT_TYPE) -> in
     await common.edit_or_send(
         update,
         messages.STUDENT_DETAILS.format(
-            full_name=str(record.get(settings.COL_FULL_NAME, "")).strip() or missing,
-            phone=str(record.get(settings.COL_PHONE, "")).strip() or missing,
-            age=str(record.get(settings.COL_AGE, "")).strip() or missing,
-            education=str(record.get(settings.COL_EDUCATION, "")).strip() or missing,
-            assigned_class=str(record.get(settings.COL_ASSIGNED_CLASS, "")).strip() or missing,
-            waiting_family=str(record.get(settings.COL_WAITING_FAMILY, "")).strip() or missing,
+            full_name=get_field(record, settings.COL_FULL_NAME) or missing,
+            phone=get_field(record, settings.COL_PHONE) or missing,
+            age=get_field(record, settings.COL_AGE) or missing,
+            education=get_field(record, settings.COL_EDUCATION) or missing,
+            assigned_class=get_field(record, settings.COL_ASSIGNED_CLASS) or missing,
+            waiting_family=get_field(
+                record, settings.COL_WAITING_FAMILY, settings.COL_WAITING_FAMILY_ALT
+            )
+            or missing,
         ),
     )
     common.mark_conversation_idle(context)

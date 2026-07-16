@@ -51,27 +51,28 @@ except (TypeError, ValueError) as exc:  # pragma: no cover - defensive
     raise ConfigError("REGISTRATION_LIMIT must be an integer.") from exc
 
 # --- Sheet schema ---
-# The order here is also the order used when appending a new registration row.
-SHEET_HEADERS: list[str] = [
-    "Timestamp",
-    "ሙሉ ስም",
-    "ስልክ ቁጥር",
-    "እድሜ",
-    "የት/ት ደረጃ",
-    "ከትምህርት በኋላ ወደቤታቸው ለመሔድ ወላጅ ይጠብቃሉ?",
-]
-
-# Column names used when reading existing student records.
+# Column names used when reading/writing student records.
+COL_ROW_NUMBER = "ተ.ቁ "
 COL_FULL_NAME = "ሙሉ ስም"
 COL_PHONE = "ስልክ ቁጥር"
 COL_AGE = "እድሜ"
 COL_EDUCATION = "የት/ት ደረጃ"
-COL_WAITING_FAMILY = "ከትምህርት በኋላ ወደቤታቸው ለመሔድ ወላጅ ይጠብቃሉ?"
+# Google Form header may contain line breaks inside this question text.
+COL_WAITING_FAMILY = "ከትምህርት በኋላ\nወደቤታቸው ለመሔድ\nወላጅ ይጠብቃሉ?"
+COL_WAITING_FAMILY_ALT = "ከትምህርት በኋላ ወደቤታቸው ለመሔድ ወላጅ ይጠብቃሉ?"
 COL_TIMESTAMP = "Timestamp"
-
-# Optional, read-only column. Not written by the bot; shown in student details
-# if the sheet happens to contain it, otherwise displayed as "—".
+# Read-only column from the form sheet; not written by the bot.
 COL_ASSIGNED_CLASS = "የተመደበበት ክፍል"
+
+# The order here is also the order used when appending a new registration row.
+SHEET_HEADERS: list[str] = [
+    COL_TIMESTAMP,
+    COL_FULL_NAME,
+    COL_PHONE,
+    COL_AGE,
+    COL_EDUCATION,
+    COL_WAITING_FAMILY,
+]
 
 # Welcome image shown on /start. The file must be named "mhsskidds" and can be
 # any common image type (png, jpg, jpeg, webp, gif, bmp). The first match found
